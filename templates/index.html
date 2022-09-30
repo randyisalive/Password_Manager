@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block title %}
+<title>Password Manager</title>
+
+
+
+{% endblock %} {% block body %}
+
+
+
+<div class="container mt-4">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Site/Description</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody id="parentDiv">
+        {% for x in content %}
+        <tr class="p po">
+          <td></td>
+          <td> <a href="https://{{x[2]}}/" style="text-decoration: none;">{{x[2]}}</a> </td>
+          <td>{{x[3]}}</td>
+          <td><strong>{{x[1]}}</strong></td>
+          <td>
+            <div id="parentDiv">
+              <button class="btn btn-warning" id="edit"> <a href="{{ url_for('home.edit', id=x[0]) }}"
+                  style="text-decoration: none; color:white;">Edit</a>
+              </button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+              </button>
+            </div>
+
+          </td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Password Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to delete this password? (password deleted CANNOT be recover)
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">
+                    <a href="{{url_for('home.delete',content_id=x[0] )}}"
+                      style="text-decoration: none; color:white;">Delete</a>
+                </div></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-5">
+    <div class="button-account text-center">
+      <button class="btn btn-primary">
+        <a href="/add-pass" class="" style="text-decoration: none; color: white">Add Password</a>
+      </button>
+      <a href="{{ url_for('home.data', id=id) }}" class="btn btn-primary">Detail data</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

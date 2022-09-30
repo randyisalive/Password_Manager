@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Edit - Password Manager</title>
+
+{% endblock %}
+{% block body %}
+
+<div class="container">
+    <form action="" class="form-control mt-5">
+        {% if content %}
+        <div class="container mb-3">
+            <span>Site</span>
+            <input type="text" name="site" value="{{content[2]}}" class="form-control">
+        </div>
+        <div class="container mb-3">
+            <span>Email</span>
+            <input type="text" name="email" value="{{content[3]}}" class="form-control">
+        </div>
+        <div class="container mb-3">
+            <span>Password</span>
+            <input type="text" name="password" value="{{content[1]}}" class="form-control">
+        </div>
+        <div class="container mb-3">
+            <input type="submit" value="Edit" class="btn btn-warning">
+
+        </div>
+        {% endif %}
+
+    </form>
+</div>
+
+
+
+{% endblock %}
