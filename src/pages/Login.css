@@ -1,15 +1,16 @@
 .form-container {
-  background-color: red;
   height: 100vh;
+  background-color: white;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
   display: flex;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .form-container form {
   display: flex;
   flex-direction: column;
-  background-color: green;
   height: 80vh;
   width: 80vw;
   gap: 2rem;
