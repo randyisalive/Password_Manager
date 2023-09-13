@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %}
+<link rel="stylesheet" href="/static/form.css" />
+
+<title>Login - Password Manager</title>{% endblock %} {% block body %}
+<div class="card mt-5 justify-content-center">
+  <div
+    class="card-body justify-content-center d-flex align-items-center gap-3"
+    style="flex-direction: column; width: 100%"
+  >
+    <h1>Log In</h1>
+    <form action="" method="POST" class="form-container gap-3">
+      <span>Username: </span>
+      <input type="text" name="username" placeholder="Username..." />
+      <span>Password: </span>
+      <input type="text" name="password" placeholder="Password..." />
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

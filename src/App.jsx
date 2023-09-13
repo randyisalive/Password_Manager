@@ -1,21 +1,24 @@
 import { createContext, useState } from "react";
 import { Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
 
 import "./App.css";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import PasswordGenerator from "./pages/PasswordGenerator";
-import Login from "./pages/Login";
+import Textbin from "./pages/Textbin";
 
 export const UserContext = createContext();
 
 function App() {
-  const [isLoggedin, setLoggedin] = useState(true);
   const [user, setUser] = useState({
     id: "1",
-    username: "Rei",
-    password: "Rei",
+    username: "",
+    password: "",
   });
+  const [edit, setEdit] = useState(false);
+  const [isLoggedin, setLoggedin] = useState(user.username !== "");
+
   const [dropdown, setDropdown] = useState(false);
 
   // for login page
@@ -23,8 +26,9 @@ function App() {
   const [password, setPassword] = useState("");
   // for login page
 
-  //data
+  //keeping user data
   const [data, setData] = useState([]);
+  //keeping user data
 
   return (
     <>
@@ -42,13 +46,16 @@ function App() {
           setPassword,
           data,
           setData,
+          edit,
+          setEdit,
         }}
       >
         {isLoggedin ? <Navbar /> : null}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/gen" element={<PasswordGenerator />} />
+          <Route path="/textbin" element={<Textbin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </UserContext.Provider>
     </>

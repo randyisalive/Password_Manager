@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %}
+
+<title>Password Manager</title>
+{% endblock %} {% block body %}
+<div class="main-container">
+  <div class="card-container">
+    <div class="title-container">
+      <h1>All User</h1>
+    </div>
+    <div class="content-container">
+      {% for user in users %}
+      <div class="user-container">
+        <a href="/detail/{{user[0]}}"> <h1>{{user[1]}}</h1> </a>
+      </div>
+      {% endfor %}
+
+      <div class="pagination-container">1</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

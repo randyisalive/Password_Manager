@@ -1,0 +1,18 @@
+:root {
+  --FUNNEL-CLOUD: #0c356a;
+  --BRILLIANT-AZURE: #279eff;
+  --BRIGHT-CYAN: #40f8ff;
+  --HERBAL-VAPORS: #d5ffd0;
+  --box-shadow-value: 2px 1px 10px 2px rgba(0, 0, 0, 0.75);
+}
+
+.navbar-container {
+  background-color: var(--FUNNEL-CLOUD);
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 2px 1px 10px 2px rgba(0, 0, 0, 0.75);
+}

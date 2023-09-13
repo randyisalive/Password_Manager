@@ -26,3 +26,17 @@ td {
 .card-menu-container {
   display: inline-block;
 }
+
+.delete-container {
+  background-color: red;
+  display: flex;
+  position: absolute;
+  height: 100px;
+  width: 60vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-container.off {
+  display: none;
+}

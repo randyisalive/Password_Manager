@@ -3,8 +3,7 @@ import "./Card.css";
 import { UserContext } from "../App";
 
 function Card(props) {
-  const { data } = useContext(UserContext);
-  const [btnDel, setDelete] = useState(false);
+  const { data, edit } = useContext(UserContext);
   return (
     <div className="card-container">
       <div className="card-header-container">
@@ -14,28 +13,27 @@ function Card(props) {
             <th>Site/Description</th>
             <th>Email</th>
             <th>Password</th>
+            {edit ? <th>Actions</th> : null}
           </thead>
           <tbody>
-            {data.map((item) => {
+            {data.map((item, index) => {
+              var rowNum = index + 1; // index is how many times it loops
               return (
                 <>
                   <tr
                     key={item[0]}
-                    onMouseOver={() => {
-                      console.log("Mouse over tr");
+                    onClick={() => {
+                      console.log("Dropdown: " + item[0]);
                       setDelete(true);
                     }}
-                    onMouseLeave={() => {
-                      setDelete(false);
-                    }}
                   >
-                    <td>{item[0]}</td>
+                    <td>{rowNum}</td>
                     <td>{item[1]}</td>
                     <td>{item[2]}</td>
                     <td>{item[3]}</td>
-                    {btnDel ? (
+                    {edit ? (
                       <td>
-                        <button>Delete</button>
+                        <button>Edit</button>
                       </td>
                     ) : null}
                   </tr>

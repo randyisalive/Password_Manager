@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { UserContext } from "../App";
 import { Link } from "react-router-dom";
 
-function Navbar(props) {
+function Navbar() {
   const { user, dropdown, setDropdown, setLoggedin, setUser } = useContext(UserContext);
 
   return (
@@ -16,10 +16,6 @@ function Navbar(props) {
       </div>
       <div className="right-container">
         <ul>
-          <li>
-            <Link>Image Manager</Link>
-          </li>
-          <li>Textbin</li>
           <li
             onClick={() => {
               setDropdown(true);

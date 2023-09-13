@@ -1,0 +1,57 @@
+:root {
+  --FUNNEL-CLOUD: #0c356a;
+  --BRILLIANT-AZURE: #279eff;
+  --BRIGHT-CYAN: #40f8ff;
+  --HERBAL-VAPORS: #d5ffd0;
+  --box-shadow-value: 2px 1px 10px 2px rgba(0, 0, 0, 0.75);
+}
+
+.card-container {
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 5rem;
+  box-shadow: var(--box-shadow-value);
+  color: black;
+}
+
+a {
+  height: 100%;
+  width: 100%;
+}
+
+.title-container {
+  background-color: var(--HERBAL-VAPORS);
+  display: flex;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+  padding: 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  flex-direction: column;
+}
+
+.user-container {
+  background-color: white;
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.user-container:hover {
+  box-shadow: var(--box-shadow-value);
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
