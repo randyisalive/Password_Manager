@@ -3,6 +3,11 @@
 <title>Password Manager</title>
 {% endblock %} {% block body %}
 <div class="main-container">
+  <div class="left-nav-container">
+    <ul>
+      <li><a href="" class="btn btn-primary">Add User</a></li>
+    </ul>
+  </div>
   <div class="card-container">
     <div class="title-container">
       <h1>All User</h1>
@@ -17,6 +22,7 @@
       <div class="pagination-container">1</div>
     </div>
   </div>
+  <div class="btn-container mt-5"><a class="btn btn-danger" href="/logout">Log out</a></div>
 </div>
 
 {% endblock %}

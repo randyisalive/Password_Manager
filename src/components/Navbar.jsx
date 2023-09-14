@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div className="navbar-container">
-      <div className="left-container">
+      <div className="left-container" onClick={() => setDropdown(false)}>
         <div className="logo-container">
           <img src="/logo1-background.png" alt="companyLogo" height={65} />
           <Link to="/">Password Manager</Link>

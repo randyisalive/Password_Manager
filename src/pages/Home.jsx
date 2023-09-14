@@ -53,7 +53,9 @@ function Home() {
       } else {
         return true;
       }
-    } // validate the form
+    }
+
+    // validate the form
 
     if (Validate() === true) {
       fetch("http://127.0.0.1:5000/add_data", {
@@ -71,6 +73,14 @@ function Home() {
     }
   }
 
+  function adminCheck() {
+    if (user.username === "admin") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
     <>
       <div
@@ -85,7 +95,7 @@ function Home() {
           <>
             <div className="form-container">
               <form action="">
-                <span>Site: </span>
+                <span className="">Site: </span>
                 <input
                   type="text"
                   name="site"
@@ -94,6 +104,7 @@ function Home() {
                   onChange={(e) => {
                     setSite(e.target.value);
                   }}
+                  className="form-control w-50"
                 />
                 <span>Email: </span>
                 <input
@@ -103,6 +114,7 @@ function Home() {
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
+                  className="form-control w-50"
                 />
                 <span>Password: </span>
                 <input
@@ -112,6 +124,7 @@ function Home() {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
+                  className="form-control w-50"
                 />
               </form>
             </div>
@@ -120,6 +133,7 @@ function Home() {
                 onClick={() => {
                   addPassword(site, email, password, user.id);
                 }}
+                className="btn btn-primary"
               >
                 Add Password
               </button>
@@ -131,6 +145,7 @@ function Home() {
               onClick={() => {
                 setForm(true);
               }}
+              className="btn btn-primary"
             >
               +
             </button>
@@ -142,28 +157,17 @@ function Home() {
                   setEdit(false);
                 }
               }}
+              className="btn btn-primary"
             >
               Edit Password
             </button>
+            {adminCheck() ? (
+              <a className="btn btn-secondary" href="http://127.0.0.1:5000/admin/login">
+                Admin Dashboard
+              </a>
+            ) : null}
           </div>
         )}
-        <button
-          onClick={() => {
-            console.log(user);
-            console.log(isLoggedin);
-            console.log(localStorage);
-          }}
-        >
-          Check Data
-        </button>
-
-        <button
-          onClick={() => {
-            localStorage.clear();
-          }}
-        >
-          Remove localStorage
-        </button>
       </div>
     </>
   );

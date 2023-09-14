@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import PasswordGenerator from "./pages/PasswordGenerator";
 import Textbin from "./pages/Textbin";
+import Edit from "./pages/Edit";
 
 export const UserContext = createContext();
 
@@ -30,6 +31,19 @@ function App() {
   const [data, setData] = useState([]);
   //keeping user data
 
+  //edit id
+  const [editID, setEditID] = useState();
+
+  // edit state
+  const [datas, setDatas] = useState([]);
+
+  const [editSite, setEditSite] = useState("");
+  const [editUsername, setEditUsername] = useState("");
+  const [editPassword, setEditPassword] = useState("");
+
+  //edit state
+  //edit id
+
   return (
     <>
       <UserContext.Provider
@@ -48,6 +62,16 @@ function App() {
           setData,
           edit,
           setEdit,
+          editID,
+          setEditID,
+          editSite,
+          setEditSite,
+          editUsername,
+          setEditUsername,
+          editPassword,
+          setEditPassword,
+          datas,
+          setDatas,
         }}
       >
         {isLoggedin ? <Navbar /> : null}
@@ -56,6 +80,7 @@ function App() {
           <Route path="/gen" element={<PasswordGenerator />} />
           <Route path="/textbin" element={<Textbin />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/edit" element={<Edit />} />
         </Routes>
       </UserContext.Provider>
     </>

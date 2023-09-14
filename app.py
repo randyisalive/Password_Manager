@@ -16,6 +16,8 @@ def db_connection():
 @app.route("/")
 def index():
     if not session:
+        if session['isAdmin'] == "1": # boolean for admin
+            pass
         return redirect(url_for("admin_login"))
     db = db_connection()
     cur = db.cursor()
@@ -51,7 +53,27 @@ def login():
 
 @app.route('/admin/login', methods=["POST", "GET"])
 def admin_login():
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+        
+        db = db_connection()
+        cur = db.cursor()
+        cur.execute("SELECT * FROM users")
+        users = cur.fetchall()
+        for user in users:
+            if username == "admin" and password == "admin":
+                session["id"] = user[0]
+                session['username'] = user[1]
+                session['password'] = user[2]
+                session["isAdmin"] = user[3]
+                return redirect(url_for("index"))
     return render_template('login/login.html')
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("admin_login"))
 
 @app.route("/get_data/<id>", methods=["POST"])
 def get_data(id):
@@ -86,6 +108,30 @@ def add_data():
     cur.close()
     db.close()
     return jsonify({"Message": "Saved!!"})
+
+
+@app.route("/edit_user/<id>", methods=["POST", "GET"])
+def edit_user(id):
+    db = db_connection()
+    cur = db.cursor()
+    cur.execute("SELECT * FROM content WHERE id = ? ", (id,))
+    content = cur.fetchone()
+    return jsonify(content)
+
+@app.route("/edit_user/saved", methods=['POST'])
+def save_edit():
+    data = request.json
+    id = data.get("id")
+    site = data.get("site")
+    username = data.get("username")
+    password = data.get("password")
+    db = db_connection()
+    cur = db.cursor()
+    cur.execute("UPDATE content SET site = ?, email = ?, password = ? WHERE id = ?", (site, username, password, id))
+    db.commit()
+    cur.close()
+    db.close()
+    return ({"Message": "Update successfull"})
 
 if __name__ == "__main__":
     app.run()
